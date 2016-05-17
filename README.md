@@ -4,7 +4,7 @@ This Dockerfile will build a container image for nginx with php-fpm for web deve
 ## Repositories
 
 ### GitHub
-The source files for this project are available on GitHub: [https://github.com/TheKatastrophe](https://github.com/TheKatastrophe)
+The source files for this project are available on GitHub: [https://github.com/TheKatastrophe/nginx-php-fpm](https://github.com/TheKatastrophe/nginx-php-fpm)
 
 ### Docker Hub
 The Docker Hub page for this project can be found [here](https://hub.docker.com/r/katastrophe/nginx-php-fpm/).
