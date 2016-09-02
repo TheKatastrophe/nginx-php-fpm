@@ -9,12 +9,19 @@ The source files for this project are available on GitHub: [https://github.com/T
 ### Docker Hub
 The Docker Hub page for this project can be found [here](https://hub.docker.com/r/katastrophe/nginx-php-fpm/).
 
+## Docker Tags and Git Branches
+
+- `latest`: This contains the latest PHP5 build
+- `php7`: This contains the latest PHP7 build
+
+Below, where `latest` is referenced in a command, this can be replaced by `php7` to use the PHP7 build instead. All other features remain the same between these two branches at present.
+
 ## Usage
 
 ### Pulling from Docker Hub
 To pull this Dockerfile from Docker Hub:
 
-	docker pull katastrophe/nginx-php-fpm
+	docker pull katastrophe/nginx-php-fpm:latest
 
 ### Building from source
 You can build this container from source with:
@@ -22,10 +29,12 @@ You can build this container from source with:
 	git clone https://github.com/TheKatastrophe/nginx-php-fpm.git
 	docker build -t katastrophe/nginx-php-fpm:latest .
 
+Optionally add `-b php7` and change the Docker tag to `php7` to build the PHP7 version.
+
 ### Running
 Run the container with minimal configuration and options:
 
-	docker run --name <container_name> -p 8080:80 -d -h <container_hostname> katastrophe/nginx-php-fpm
+	docker run --name <container_name> -p 8080:80 -d -h <container_hostname> katastrophe/nginx-php-fpm:latest
 
 This will run the container, and you can access the web server by browsing to http://docker-host:8080
 
@@ -37,7 +46,7 @@ Syntax: `-v /host/path:/container/path`
 
 You can use Docker to link a path within the container to a path on the host. For example, to expose the web server's document root on the Docker host at `/opt/website`, you could use:
 
-	docker run --name <container_name> -p 8080:80 -d -h <container_hostname> -v /opt/website:/usr/share/nginx/html katastrophe/nginx-php-fpm
+	docker run --name <container_name> -p 8080:80 -d -h <container_hostname> -v /opt/website:/usr/share/nginx/html katastrophe/nginx-php-fpm:latest
 
 #### Git integration
 
