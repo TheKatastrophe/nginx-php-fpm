@@ -19,7 +19,7 @@ yum -y install nginx
 RUN rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 
 # Install php-fpm etc
-RUN yum -y install php70w-fpm php70w-mysql php70w-ldap php70w-cli php70w-mbstring php70w-pdo php70w-pear php70w-xml php70w-soap
+RUN yum -y install php70w-fpm php70w-mysql php70w-ldap php70w-cli php70w-mbstring php70w-pdo php70w-pear php70w-xml php70w-soap php70w-intl
 
 # Install git too
 RUN yum -y install git
