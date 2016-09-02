@@ -15,8 +15,11 @@ RUN \
 RUN rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm && \
 yum -y install nginx
 
+# Install webtatic repo
+RUN rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+
 # Install php-fpm etc
-RUN yum -y install php-fpm php-mysql php-ldap php-cli php-mbstring php-pdo php-pear php-xml php-soap
+RUN yum -y install php70w-fpm php70w-mysql php70w-ldap php70w-cli php70w-mbstring php70w-pdo php70w-pear php70w-xml php70w-soap
 
 # Install git too
 RUN yum -y install git
