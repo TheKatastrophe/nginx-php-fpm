@@ -1,3 +1,5 @@
+THE README FOR THIS BRANCH IS PENDING UPDATE. DO NOT USE THIS DOCUMENTATION FOR THE `nogit-php5` BRANCH.
+
 ## Introduction
 This Dockerfile will build a container image for nginx with php-fpm for web development and webapps. It supports templating, automated cloning from git, installation of [Composer](https://getcomposer.org/) and the installation of dependencies using Composer. The image is based on CentOS 7, and was initally forked from [this repository](https://github.com/ngineered/nginx-php-fpm).
 
