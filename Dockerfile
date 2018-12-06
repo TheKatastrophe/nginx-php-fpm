@@ -1,5 +1,5 @@
 FROM centos:7
-MAINTAINER Kat Andry (kat@cadence.net.uk)
+MAINTAINER Keturah Dola-Borg
 
 ENV container docker
 
@@ -20,9 +20,6 @@ RUN rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 
 # Install php-fpm etc
 RUN yum -y install php56w-fpm php56w-mysql php56w-ldap php56w-cli php56w-mbstring php56w-pdo php56w-pear php56w-xml php56w-soap php56w-intl
-
-# Install git too
-RUN yum -y install git
 
 # tweak php-fpm config
 RUN sed -i -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php.ini && \
@@ -46,11 +43,6 @@ RUN rm -Rf /etc/nginx/conf.d/* && \
 mkdir -p /etc/nginx/ssl/
 ADD conf/nginx-site.conf /etc/nginx/conf.d/default.conf
 
-# Add git commands to allow container updating
-ADD scripts/pull /usr/bin/pull
-ADD scripts/push /usr/bin/push
-RUN chmod 755 /usr/bin/pull && chmod 755 /usr/bin/push
-
 # Supervisor Config
 ADD conf/supervisord.conf /etc/supervisord.conf
 
@@ -61,12 +53,7 @@ RUN chmod 755 /start.sh
 # Setup Volume
 VOLUME ["/usr/share/nginx/html"]
 
-# add test PHP file
-ADD src/index.php /usr/share/nginx/html/index.php
-RUN chown -Rf nginx.nginx /usr/share/nginx/html/
-
 # Expose Ports
-EXPOSE 443
 EXPOSE 80
 
 CMD ["/bin/bash", "/start.sh"]
